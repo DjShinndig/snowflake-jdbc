@@ -5,6 +5,8 @@ matrix:
   include:
   - os: linux
     jdk: oraclejdk8
+    env:
+      - JACOCO_COVERAGE=true
     before_install:
       - eval "${MATRIX_EVAL}"
       - sudo apt-get update
@@ -18,9 +20,7 @@ matrix:
       - source env/bin/activate
     script:
       - ./scripts/run_travis.sh
-      - echo SUCCESS
       - bash <(curl -s https://codecov.io/bash)
-      - echo END OF CODECOV
   - os: linux
     jdk: oraclejdk9
     before_install:
